@@ -1,4 +1,3 @@
-/* General body and container styling */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -9,15 +8,14 @@ body {
 .app-container {
     min-height: 100vh;
     background: linear-gradient(to bottom right, #EEF2FF, #F3E8FF);
-    padding: 32px;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to start to prevent table from centering vertically if content is short */
+    align-items: flex-start;
 }
 
 .table-wrapper {
-    min-width: 1024px;
-    width: 100%; /* Ensure it takes full width within max-width */
+    width: 100%;
     margin: 0 auto;
     background-color: #FFFFFF;
     border-radius: 12px;
@@ -25,8 +23,7 @@ body {
     overflow: hidden;
 }
 
-/* Header styling */
-.table-header-title {
+.table-title {
     font-size: 30px;
     font-weight: 800;
     color: #374151;
@@ -38,34 +35,29 @@ body {
     border-top-right-radius: 12px;
 }
 
-/* Table content area padding */
-.table-content-area {
+.table-content {
     padding: 24px;
 }
 
-/* Table container styling */
-.table-container {
+.table-scroll {
     overflow-x: auto;
     border-radius: 8px;
     border: 1px solid #E5E7EB;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Table element styling */
 .data-table {
-    min-width: 100%;
+    min-width: 800px;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
 
-/* Table header row styling */
 .data-table thead {
     background: linear-gradient(to right, #6366F1, #8B5CF6);
     color: #FFFFFF;
 }
 
-/* Table header cell styling */
 .data-table th {
     padding: 12px 24px;
     text-align: left;
@@ -83,17 +75,14 @@ body {
     border-top-right-radius: 8px;
 }
 
-/* Table body styling */
 .data-table tbody {
     background-color: #FFFFFF;
 }
 
-/* Table row styling */
 .data-table tr {
     transition: background-color 0.2s;
 }
 
-/* Alternating row colors */
 .data-table tr.even-row {
     background-color: #F9FAFB;
 }
@@ -102,29 +91,9 @@ body {
     background-color: #FFFFFF;
 }
 
-/* Row hover effect */
 .data-table tr:hover {
     background-color: #EEF2FF;
 }
-
-/* Table data cell styling */
-/* .data-table td {
-    padding: 16px 24px;
-    white-space: nowrap;
-    font-size: 14px;
-    color: #4B5563;
-    text-overflow: ellipsis;
-  max-width: 300px;
-}
-
-.data-table td:hover {
-  overflow: visible;
-  white-space: normal;
-  background-color: #f9f9f9;
-  position: relative;
-  z-index: 1;
-} */
-
 
 .data-table td {
   padding: 16px 24px;
@@ -144,23 +113,14 @@ body {
   word-break: break-word;
 }
 
-/* .data-table td:hover {
-  background-color: #f9f9f9;
-  position: relative;
-  z-index: 1;
-} */
-
-
-
-
 .data-table td:first-child {
     color: #1F2937;
     font-weight: 500;
 }
 
-/* Pagination container styling */
 .pagination-controls {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 24px 16px;
@@ -171,7 +131,6 @@ body {
     border-bottom-right-radius: 12px;
 }
 
-/* Pagination button styling */
 .pagination-button {
     padding: 10px 16px;
     border-radius: 6px;
@@ -192,16 +151,180 @@ body {
     cursor: not-allowed;
 }
 
-/* Active pagination button styling */
 .pagination-button.active {
     background-color: #4F46E5;
     color: #FFFFFF;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border-color: #4F46E5; /* Ensure border matches background for active state */
+    border-color: #4F46E5;
 }
 
-/* Specific styling for the body in an iframe environment */
 body {
   margin: 0;
   padding: 0;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #4f46e5;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1023px) {
+    .app-container {
+        padding: 15px;
+    }
+
+    .table-wrapper {
+        border-radius: 8px;
+    }
+
+    .table-title {
+        font-size: 24px;
+        padding: 18px;
+    }
+
+    .table-content {
+        padding: 15px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+
+    .data-table td.title,
+    .data-table td.supplier {
+        max-width: 250px;
+    }
+
+    .pagination-controls {
+        padding: 15px;
+        gap: 6px;
+    }
+
+    .pagination-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .app-container {
+        padding: 10px;
+    }
+
+    .table-title {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .table-content {
+        padding: 10px;
+    }
+
+    .data-table {
+        min-width: 600px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .data-table td.title,
+    .data-table td.supplier {
+        max-width: 180px;
+    }
+
+    .pagination-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .pagination-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-title {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .data-table {
+        min-width: 450px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    .pagination-controls {
+        padding: 8px;
+        gap: 3px;
+    }
+
+    .pagination-button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 2;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-input {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
 }
